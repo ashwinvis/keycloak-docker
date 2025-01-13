@@ -6,13 +6,19 @@ ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLO
 ADD $KEYCLOAK_DIST /tmp/keycloak/
 
 
-# Install bash for kc.sh script and curl. Curl may be useful in heatlcheck
 RUN set -eux ; \
-    apk add --no-cache bash curl
+    apk add --no-cache bash curl tar gzip
 
 ENV LANG en_US.UTF-8
 
-COPY --from=dist-alpine --chown=1000:0 /opt/keycloak /opt/keycloak
+# If it is a local tar archive then it is unpacked, if from remote is just downloaded.
+RUN set -eux; \
+    cd /tmp/keycloak ; \
+    tar -xvf keycloak-*.tar.gz ; \
+    rm -f keycloak-*.tar.gz ; \
+    mv keycloak-* /opt/keycloak ; \
+    mkdir -p /opt/keycloak/data ; \
+    chmod -R g+rwX /opt/keycloak
 
 RUN echo "keycloak:x:0:root" >> /etc/group && \
     echo "keycloak:x:1000:0:keycloak user:/opt/keycloak:/sbin/nologin" >> /etc/passwd
