@@ -6,6 +6,16 @@ For further more information, please see the [Running Keycloak in a container gu
 
 ### Baking the cake 🍰
 
+#### Github actions
+
+Go to <https://github.com/ashwinvis/keycloak-docker/actions/workflows/docker-image.yml> and press on *Run workflow* or alternatively use Github CLI:
+
+```console
+gh workflow run -f version="<VERSION>" .github/workflows/docker-image.yml
+```
+
+#### Locally
+
 If you need to build it yourself, you can do it like this
 
 ```shell
