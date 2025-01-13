@@ -1,4 +1,4 @@
-FROM alpine/java:22-jdk AS  dist-alpine
+FROM eclipse-temurin:23-jre-alpine AS dist-alpine
 
 ARG KEYCLOAK_VERSION 999.0.0-SNAPSHOT
 ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/keycloak-$KEYCLOAK_VERSION.tar.gz

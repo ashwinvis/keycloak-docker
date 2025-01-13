@@ -1,4 +1,4 @@
-# Keycloak Docker Image based on `alpine/java`
+# Keycloak Docker Image based on `eclipse-temurin` alpine base image
 
 If you want to use this docker image, you should use `ghcr.io/ashwinvis/keycloak:<VERSION>-alpine` as the base image.
 
