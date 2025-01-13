@@ -18,7 +18,8 @@ RUN set -eux; \
     rm -f keycloak-*.tar.gz ; \
     mv keycloak-* /opt/keycloak ; \
     mkdir -p /opt/keycloak/data ; \
-    chmod -R g+rwX /opt/keycloak
+    chmod -R g+rwX /opt/keycloak; \
+    chown -R 1000:0 /opt/keycloak
 
 RUN echo "keycloak:x:0:root" >> /etc/group && \
     echo "keycloak:x:1000:0:keycloak user:/opt/keycloak:/sbin/nologin" >> /etc/passwd
