@@ -1,5 +1,5 @@
 group "default" {
-    targets = ["keycloak", "keycloak-alpine"]
+    targets = ["keycloak-alpine"]
 }
 
 variable "VERSION" {
@@ -10,10 +10,7 @@ variable "TAG" {
   default = "keycloak:${VERSION}"
 }
 
-target "docker-metadata-action" {}
-
 target "keycloak-alpine" {
-    inherits = ["keycloak"]
     args = {
         DIST = "alpine"
         KEYCLOAK_VERSION = "${VERSION}"
