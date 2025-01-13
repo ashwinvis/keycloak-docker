@@ -9,18 +9,8 @@ variable "VERSION" {
 variable "TAG" {
   default = "keycloak:${VERSION}"
 }
-target "docker-metadata-action" {}
 
-target "keycloak" {
-    inherits = ["docker-metadata-action"]
-    context = "."
-    dockerfile = "Dockerfile"
-    args = {
-        DIST = "amazonlinux"
-        KEYCLOAK_VERSION = "${VERSION}"
-    }
-    tags = ["${TAG}"]
-}
+target "docker-metadata-action" {}
 
 target "keycloak-alpine" {
     inherits = ["keycloak"]
