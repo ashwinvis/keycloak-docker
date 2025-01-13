@@ -9,7 +9,7 @@ ADD $KEYCLOAK_DIST /tmp/keycloak/
 RUN set -eux ; \
     apk add --no-cache bash curl tar gzip
 
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 # If it is a local tar archive then it is unpacked, if from remote is just downloaded.
 RUN set -eux; \
