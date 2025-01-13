@@ -10,8 +10,6 @@ ADD $KEYCLOAK_DIST /tmp/keycloak/
 RUN set -eux ; \
     apk add --no-cache bash curl
 
-FROM dist-${DIST}
-
 ENV LANG en_US.UTF-8
 
 COPY --from=base --chown=1000:0 /opt/keycloak /opt/keycloak
